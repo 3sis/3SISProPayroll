@@ -2,7 +2,7 @@ on: push
 name: 🚀 Deploy website on Hosting ->server
 jobs:
   web-deploy:
-    name: 🚀 Deploy Code Server 👨‍💻 
+    name: 🚀 👨‍💻Deploy Code Server 
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
@@ -16,8 +16,8 @@ jobs:
     # - name: Copy .env
       # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       
-    - name: 🔨Install Dependencies
-      run: composer install --optimize-autoloader --no-dev --no-interaction
+    #- name: 🔨Install Dependencies
+    #  run: composer install --optimize-autoloader --no-dev --no-interaction
       
 #     - name: Generate key
 #       run: php artisan key:generate

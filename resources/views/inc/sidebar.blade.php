@@ -25,7 +25,7 @@
         </div>
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
-            <li class="menu active">
+            <!-- <li class="menu active">
                 <a href="#dashboard" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
@@ -48,9 +48,9 @@
                         <a href="./index2.html"> Sales </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
-             <li class="menu">
+            <li class="menu {{ Request::routeIs('home') ? 'active' : '' }}">
                 <a href="#configuration" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
@@ -66,16 +66,39 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled show" id="configuration" data-bs-parent="#accordionExample">
-                    <li class="active">
-                        <a href="./index.html"> Analytics </a>
-                    </li>
-                    <li>
-                        <a href="./index2.html"> Sales </a>
+                    <!-- <li class="active"> -->
+                    <li class="{{ Request::routeIs('home') ? 'active' : '' }}">
+                        <a href="{{route('home')}}"> Home </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="menu menu-heading">
+            <li class="menu {{ Request::routeIs('location') ? 'active' : '' }}">
+                <a href="#application" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span>APPLICATION</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled show" id="application" data-bs-parent="#accordionExample">
+                    <!-- <li class="active"> -->
+                    <li class="{{ Request::routeIs('location') ? 'active' : '' }}">
+                        <a href="{{route('location')}}"> Location Master </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg><span>APPLICATIONS</span></div>
@@ -854,7 +877,7 @@
                         <span>Changelog</span>
                     </div>
                 </a>
-            </li>
+            </li>-->
 
         </ul>
 
