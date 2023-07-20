@@ -166,6 +166,21 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        //Location
+        'GMLMHLocationId' => [
+            'required' => 'Location Id Cant be blank',
+            'min' => 'Location Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'GMLMHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'GMLMHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
+         'GMLMHCityId' => [
+            'required' => 'You must select a City Id',
+         ],
     ],
 
     /*

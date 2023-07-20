@@ -72,15 +72,20 @@
                     <div class="widget-content widget-content-area">
 
                             <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label for="validationDefault01" class="form-label">Location Id<span class="text-danger">
                                         *</span></label>
-                                <input type="text" name='GMLMHLocationId' id='GMLMHLocationId' class='form-control threshold' maxlength="20" placeholder="Enter Location Name" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMLMHLocationId', $location['GMLMHLocationId'] ?? '') }}">
+                                <input type="text" name='GMLMHLocationId' id='GMLMHLocationId' class='form-control threshold' maxlength="20" placeholder="Enter Location Name" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMLMHLocationId', $location['GMLMHLocationId'] ?? '') }}" readonly="readonly">
                             </div>
                             <div class="col-md-6">
                                 <label for="GMLMHDesc1" class="form-label">Description 1<span class="text-danger"> *</span></label>
                                 <input type="text" name='GMLMHDesc1' id='GMLMHDesc1' class='form-control threshold' maxlength="20" placeholder="Enter Location Description 1" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMLMHDesc1', $location['GMLMHDesc1'] ?? '') }}">
 
+                            </div>
+                            <div class="col-md-3">
+                                <label for="validationDefault05" class="form-label">BI Desc<span class="text-danger">
+                                        *</span></label>
+                                <input type="text" name='GMLMHBiDesc' id='GMLMHBiDesc' class='form-control threshold' maxlength="20" placeholder="Enter Bi Desc" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMLMHBiDesc', $location['GMLMHBiDesc'] ?? '') }}">
                             </div>
                             <div class="col-md-12">
                                 <label for="validationDefault03" class="form-label">Description 2</label>
