@@ -27,10 +27,10 @@ class LocationController extends Controller
     public function index(Request $request)
     {
         $location_list = Location::where('GMLMHMarkForDeletion', '!=', 1)->where('t05901l06.GMLMHCompanyId', $this->gCompanyId)->with('fnCity', 'fnState', 'fnCountry')->get();
-        $location_delete_list = Location::where('GMLMHMarkForDeletion',1)->where('t05901l06.GMLMHCompanyId', $this->gCompanyId)->with('fnCity', 'fnState', 'fnCountry')->get();
+        $location_delete_list = Location::where('GMLMHMarkForDeletion', 1)->where('t05901l06.GMLMHCompanyId', $this->gCompanyId)->with('fnCity', 'fnState', 'fnCountry')->get();
         $city_list = City::all();
         // dd($location_list);
-        return view('config.Geographic.location', compact('city_list', 'location_list','location_delete_list'));
+        return view('config.Geographic.location', compact('city_list', 'location_list', 'location_delete_list'));
     }
     public function add(Request $request)
     {
@@ -98,7 +98,7 @@ class LocationController extends Controller
     public function delete_location_list()
     {
         $delete_list = Location::where('GMLMHMarkForDeletion', 1)->with('fnCity', 'fnState', 'fnCountry')->get();
-        return $this->TableActionRestoreTrait($delete_list);
+        return view('config.Geographic.delete_location_list', compact('delete_list'));
     }
 
 
@@ -106,12 +106,10 @@ class LocationController extends Controller
     {
         try {
             $location = Location::find($request->id);
-            // $request->action == 'delete' ? $location->GMLMHMarkForDeletion = 1 : $location->GMLMHMarkForDeletion = 0;
-            if($request->action == 'delete') {
-                $location->GMLMHMarkForDeletion = 1;
-                $location->GMLMHDeletedAt = now();
-                $location->save();
-            }
+            $request->action == 'delete' ? $location->GMLMHMarkForDeletion = 1 : $location->GMLMHMarkForDeletion = 0;
+
+            $location->GMLMHDeletedAt = now();
+            $location->save();
 
             if ($location) {
                 return response()->json(['status' => 'success', 'data' => $location]);

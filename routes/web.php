@@ -30,7 +30,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('delete_restore', 'delete_restore');
         Route::get('get_city_desc', 'getCityDesc')->name('get_city_desc');
         Route::get('delete_location_list', 'delete_location_list');
-
     });
     // WeeklyOff
     Route::controller(WeeklyOffController::class)->group(function () {
@@ -57,6 +56,12 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/index2.html', function () {
     return view('template.index2');
 });
+
+Route::get('/component-modal.html', function () {
+    return view('template.component-modal');
+});
+
+
 
 Route::get('/form-bootstrap-basic.html', function () {
     return view('template.form-bootstrap-basic');
