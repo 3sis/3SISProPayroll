@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Config\Geographic\LocationController;
+use App\Http\Controllers\Config\Geographic\CityController;
 use App\Http\Controllers\Config\FiscalYear\WeeklyOffController;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -30,6 +31,17 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('delete_restore', 'delete_restore');
         Route::get('get_city_desc', 'getCityDesc')->name('get_city_desc');
         Route::get('delete_location_list', 'delete_location_list');
+    });
+    // City Master
+    Route::controller(CityController::class)->group(function () {
+        // Route::get('/','index');
+        Route::get('city', 'index')->name('city');
+        Route::get('city/add', 'add')->name('add_city');
+        Route::get('edit_city/{id}', 'edit_city')->name('edit_city');
+        Route::post('submit_city', 'submit_city');
+        Route::post('city_restore', 'city_restore');
+        Route::get('get_State_desc', 'getStateDesc')->name('get_State_desc');
+        Route::get('delete_city_list', 'delete_city_list');
     });
     // WeeklyOff
     Route::controller(WeeklyOffController::class)->group(function () {

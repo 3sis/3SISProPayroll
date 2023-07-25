@@ -29,7 +29,6 @@ class LocationController extends Controller
         $location_list = Location::where('GMLMHMarkForDeletion', '!=', 1)->where('t05901l06.GMLMHCompanyId', $this->gCompanyId)->with('fnCity', 'fnState', 'fnCountry')->get();
         $location_delete_list = Location::where('GMLMHMarkForDeletion', 1)->where('t05901l06.GMLMHCompanyId', $this->gCompanyId)->with('fnCity', 'fnState', 'fnCountry')->get();
         $city_list = City::all();
-        // dd($location_list);
         return view('config.Geographic.location', compact('city_list', 'location_list', 'location_delete_list'));
     }
     public function add(Request $request)
@@ -104,6 +103,7 @@ class LocationController extends Controller
 
     public function delete_restore(Request $request)
     {
+        // dd($request->all());
         try {
             $location = Location::find($request->id);
             $request->action == 'delete' ? $location->GMLMHMarkForDeletion = 1 : $location->GMLMHMarkForDeletion = 0;

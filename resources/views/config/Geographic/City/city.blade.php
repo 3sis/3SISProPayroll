@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page_title', 'Location')
+@section('page_title', 'City')
 @section('content')
 @section('css')
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,7 +35,7 @@
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg><span class="inner-text">Home</span></a></li>
-                    <li class="breadcrumb-item active"><a href="#">Location Master</a></li>
+                    <li class="breadcrumb-item active"><a href="#">City Master</a></li>
                 </ol>
             </nav>
 
@@ -51,7 +51,7 @@
                 </svg>
             </button>
 
-            <a href="{{ route('add_location') }}" class="btn btn-success me-4 btn-sm mx-1">
+            <a href="{{ route('add_city') }}" class="btn btn-success me-4 btn-sm mx-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="16"></line>
@@ -67,7 +67,7 @@
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Restore Location</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Restore City</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -90,7 +90,7 @@
 
 
 
-        {{-- {{ $location_list }} --}}
+        {{-- {{ $city_list }} --}}
 
         <div class="row layout-top-spacing">
 
@@ -100,7 +100,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Location Name</th>
+                                <th>City Name</th>
                                 <th>Country Name</th>
                                 <th>BI</th>
                                 <th>User</th>
@@ -108,17 +108,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($location_list as $row)
+                            @foreach ($city_list as $row)
                             {{-- {{ $row }} --}}
                             <tr>
-                                <td>{{ $row->GMLMHLocationId }}</td>
-                                <td>{{ $row->GMLMHDesc1 }}</td>
-                                <td>{{ $row->GMLMHCountryId }}</td>
-                                <td>{{ $row->GMLMHBiDesc }}</td>
-                                <td>{{ $row->GMLMHUser }}</td>
+                                <td>{{ $row->GMCTHCityId }}</td>
+                                <td>{{ $row->GMCTHDesc1 }}</td>
+                                <td>{{ $row->GMCTHCountryId }}</td>
+                                <td>{{ $row->GMCTHBiDesc }}</td>
+                                <td>{{ $row->GMCTHUser }}</td>
                                 <td>
                                     <!-- Edit -->
-                                    <a href="edit_location/{{ Crypt::encryptString($row->id) }}"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
+                                    <a href="edit_city/{{ Crypt::encryptString($row->id) }}"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
                                             <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
                                             </path>
                                         </svg></a>
@@ -140,48 +140,7 @@
                     </table>
                 </div>
             </div>
-
         </div>
-        <!-- Restore list undeletemodal -->
-        <!-- <div id="UndoModal" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered 3SISPro-modal-dialog" role="document"
-                style="max-width:1000px!important;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
-                        <button type="button" data-bs-dismiss="modal" aria-label="Close">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="table-responsive">
-                                <table id="UndoModalTable" class="no-footer" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th title="Location Id">ID</th>
-                                            <th>Location Name</th>
-                                            <th>Country Name</th>
-                                            <th>User</th>
-                                            <th>Action</th>
-                                            <th style="visibility: hidden;">Unique Id</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- end undeletemodal -->
-
     </div>
 </div>
 @endsection
@@ -226,10 +185,9 @@
         var action = $(this).attr('action');
         var id = $(this).attr('id');
 
-        var lid = $(this).closest("tr").find("td:eq(0)").text();
         var desc = $(this).closest("tr").find("td:eq(1)").text();
-        $deleteMessage3SIS = fnConfirmationMsg('Delete', 'Location', lid, desc);
-        $successMessage3SIS = fnSuccessMsg('Deleted', 'Location', lid, desc);
+        $deleteMessage3SIS = fnConfirmationMsg('Delete', 'City', id, desc);
+        $successMessage3SIS = fnSuccessMsg('Deleted', 'City', id, desc);
 
         Swal.fire({
             title: $deleteMessage3SIS,
@@ -258,7 +216,7 @@
                             allowOutsideClick: false,
                             timer: 5000,
                         })
-                        window.location.reload();
+                        window.city.reload();
                     }
                 })
             } else if (
@@ -281,7 +239,7 @@
         var action = 'undelete';
         var id = $(this).attr('id');
         var desc = $(this).closest("tr").find("td:eq(1)").text();
-        $restoreMessage3SIS = fnConfirmationMsg('Restore', 'Location', id, desc);
+        $restoreMessage3SIS = fnConfirmationMsg('Restore', 'City', id, desc);
         Swal.fire({
             title: $restoreMessage3SIS,
             icon: 'warning',
@@ -307,7 +265,7 @@
                             title: 'Your data has been Restored.',
                         })
                         // $('#zero-config').DataTable().reload();
-                        // window.location.reload();
+                        // window.city.reload();
 
 
                     }
@@ -316,7 +274,7 @@
         })
     });
     $('#modal_Cancel').click(function() {
-        window.location.reload();
+        window.city.reload();
     });
 
     function fnConfirmationMsg(actionName, tableName, Id, Desc) {
@@ -333,7 +291,7 @@
 
     function delete_list() {
         $.ajax({
-            url: "delete_location_list",
+            url: "delete_city_list",
             mehtod: "get",
             success: function(data) {
                 $('.delete_list').empty().html(data);
