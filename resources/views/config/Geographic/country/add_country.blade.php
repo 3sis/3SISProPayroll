@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page_title', 'Add Location')
+@section('page_title', 'Add Country')
 @section('content')
 @section('css')
     <!-- BEGIN THEME GLOBAL STYLES -->
@@ -55,7 +55,7 @@
                                     <button
                                         class="btn btn-danger _effect--ripple waves-effect waves-light error_btn mx-2 bs-tooltip" data-bs-placement="bottom" title="Error"
                                         data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button>
-                                    <a href="{{ route('location') }}"
+                                    <a href="{{ route('country') }}"
                                         class="btn btn-info _effect--ripple waves-effect waves-light bs-tooltip" data-bs-placement="bottom" title="Back"
                                         type="submit">Back</a>
 
@@ -72,77 +72,44 @@
             <div class="col-lg-12 layout-spacing">
                 <div class="statbox widget box box-shadow">
                     <div class="widget-header">
-                        <h4>Add Location</h4>
+                        <h4>Add Country</h4>
                     </div>
                     <div class="widget-content widget-content-area">
 
                         <div class="row g-3">
                             <div class="col-md-3">
-                                <label for="validationDefault01" class="form-label">Location Id<span
+                                <label for="validationDefault01" class="form-label">Country Id<span
                                         class="text-danger">
                                         *</span></label>
-                                <input type="text" name='GMLMHLocationId' id='GMLMHLocationId'
-                                    class='form-control threshold' maxlength="20" placeholder="Enter Location Name"
+                                <input type="text" name='GMCMHCountryId' id='GMCMHCountryId'
+                                    class='form-control threshold' maxlength="20" placeholder="Enter Country Name"
                                     style='border-color: rgb(102, 175, 233); outline: 0px'
-                                    value="{{ old('GMLMHLocationId') }}">
+                                    value="{{ old('GMCMHCountryId') }}">
                             </div>
                             <div class="col-md-6">
-                                <label for="GMLMHDesc1" class="form-label">Description 1<span class="text-danger">
+                                <label for="GMCMHDesc1" class="form-label">Description 1<span class="text-danger">
                                         *</span></label>
-                                <input type="text" name='GMLMHDesc1' id='GMLMHDesc1'
+                                <input type="text" name='GMCMHDesc1' id='GMCMHDesc1'
                                     class='form-control threshold' maxlength="20"
-                                    placeholder="Enter Location Description 1"
+                                    placeholder="Enter Country Description 1"
                                     style='border-color: rgb(102, 175, 233); outline: 0px'
-                                    value="{{ old('GMLMHDesc1') }}">
+                                    value="{{ old('GMCMHDesc1') }}">
 
                             </div>
                             <div class="col-md-3">
                                 <label for="validationDefault05" class="form-label">BI Desc</label>
-                                <input type="text" name='GMLMHBiDesc' id='GMLMHBiDesc'
+                                <input type="text" name='GMCMHBiDesc' id='GMCMHBiDesc'
                                     class='form-control threshold' maxlength="20" placeholder="Enter Bi Desc"
                                     style='border-color: rgb(102, 175, 233); outline: 0px'
-                                    value="{{ old('GMLMHBiDesc') }}">
+                                    value="{{ old('GMCMHBiDesc') }}">
                             </div>
                             <div class="col-md-12">
                                 <label for="validationDefault03" class="form-label">Description 2</label>
-                                <textarea name='GMLMHDesc2' id='GMLMHDesc2' class='form-control textarea' maxlength="200"
-                                    placeholder="Enter Location Description 2" style='border-color: rgb(102, 175, 233); outline: 0px'>{{ old('GMLMHDesc2') }}</textarea>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="validationDefault04" class="form-label">City<span class="text-danger">
-                                        *</span></label>
-                                <select id='GMLMHCityId' name='GMLMHCityId' class="form-select"
-                                    style="width: 100%;border: 1px solid #68a6ec;">
-                                    <option value=''>Select City</option>
-                                    @foreach ($city_list as $city)
-                                        <option value='{{ $city->GMCTHCityId }}'>
-                                            {{ $city->GMCTHDesc1 }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="validationDefault05" class="form-label">State</label>
-                                <input type="hidden" name="GMLMHStateId" id="GMLMHStateId">
-                                <input type="text" name='stateName' id='stateName' class='form-control' readonly>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validationDefault05" class="form-label">Contry</label>
-                                <input type="hidden" name="GMLMHCountryId" id="GMLMHCountryId">
-                                <input type="text" name='countryName' id='countryName' class='form-control'
-                                    readonly>
+                                <textarea name='GMCMHDesc2' id='GMCMHDesc2' class='form-control textarea' maxlength="200"
+                                    placeholder="Enter Country Description 2" style='border-color: rgb(102, 175, 233); outline: 0px'>{{ old('GMCMHDesc2') }}</textarea>
                             </div>
 
                             <div class="col-12">
-
-
-                                <!-- <a href="{{ route('location') }}" class="btn btn-info _effect--ripple waves-effect waves-light" type="submit">Back</a>
-
-                                <button class="btn btn-success _effect--ripple waves-effect waves-light" type="submit">Save</button>
-
-                                <button class="btn btn-danger _effect--ripple waves-effect waves-light error_btn" data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button> -->
-
                                 <!-- Modal -->
                                 <div class="modal fade" id="ErrorListModalCenter" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -224,30 +191,25 @@
     });
     $("#AddForm").submit(function(e) {
         e.preventDefault();
-        $('#GMLMHLocationId,#GMLMHDesc1,#GMLMHCityId').removeClass('border border-danger');
+        $('#GMCMHCountryId,#GMCMHDesc1').removeClass('border border-danger');
 
-        if ($('#GMLMHLocationId').val() == '') {
-            $('#GMLMHLocationId').addClass('border border-danger');
+        if ($('#GMCMHCountryId').val() == '') {
+            $('#GMCMHCountryId').addClass('border border-danger');
         }
-        if ($('#GMLMHDesc1').val() == '') {
-            $('#GMLMHDesc1').addClass('border border-danger');
+        if ($('#GMCMHDesc1').val() == '') {
+            $('#GMCMHDesc1').addClass('border border-danger');
         }
 
-        if ($('#GMLMHCityId').val() == '') {
-            $('#GMLMHCityId').addClass('border border-danger');
-        }
+
         $('.form_error_list').html('');
-        if ($('#GMLMHLocationId').val() == '' || $('#GMLMHDesc1').val() == '' ||
-            $('#GMLMHCityId').val() == '') {
-            if ($('#GMLMHLocationId').val() == '') {
-                $('.form_error_list').append('<p>Please Enter Location name !</p>');
+        if ($('#GMCMHCountryId').val() == '' || $('#GMCMHDesc1').val() == '') {
+            if ($('#GMCMHCountryId').val() == '') {
+                $('.form_error_list').append('<p>Please Enter Country name !</p>');
             }
-            if ($('#GMLMHDesc1').val() == '') {
-                $('.form_error_list').append('<p>Please Enter Location Description 1 !</p>');
+            if ($('#GMCMHDesc1').val() == '') {
+                $('.form_error_list').append('<p>Please Enter Country Description 1 !</p>');
             }
-            if ($('#GMLMHCityId').val() == '') {
-                $('.form_error_list').append('<p>Please Select City !</p>');
-            }
+
             var error_count = $(".form_error_list").children().length;
             console.log(error_count);
             if (error_count > 0) {
@@ -263,7 +225,7 @@
             var action = $('#action').val();
             console.log('action: ' + action);
             $.ajax({
-                url: "{{ url('submit_location') }}",
+                url: "{{ url('submit_country') }}",
                 method: 'post',
                 data: new FormData(this),
                 processData: false,
@@ -288,10 +250,9 @@
                     }
                     if (response.status == 'success') {
                         // Bottom Right
-                        $('#GMLMHCityId').val('').trigger("change");
                         $('#AddForm')[0].reset();
                         custom_notification({
-                            text: 'Location Added successfully',
+                            text: 'Country Added successfully',
                             pos: 'bottom-right',
                             duration: 100000
                         })
@@ -299,7 +260,7 @@
                     if (response.status == 'error') {
                         // Bottom Right
                         custom_notification({
-                            text: 'Location Master not save',
+                            text: 'Country Master not save',
                             pos: 'bottom-right'
                         })
                     }
@@ -308,24 +269,6 @@
         }
     });
 
-    $('#GMLMHCityId').change(function() {
-        var id = $(this).val();
-        // alert(id);
-        getDesc(id);
-    });
 
-    function getDesc(id) {
-        $.ajax({
-            url: "{{ url('get_city_desc') }}",
-            type: 'get',
-            data: 'id=' + id,
-            success: function(response) {
-                $('#GMLMHStateId').val(response.StateId);
-                $('#stateName').val(response.StateDesc);
-                $('#GMLMHCountryId').val(response.CountryId);
-                $('#countryName').val(response.CountryDesc);
-            }
-        })
-    }
 </script>
 @endsection

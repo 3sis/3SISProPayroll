@@ -51,13 +51,12 @@
                 </svg>
             </button>
 
-            <a href="{{ route('add_city') }}" class="btn btn-success me-4 btn-sm mx-1">
+            <a href="{{ route('add_city') }}" class="btn btn-success me-4 btn-sm mx-1 bs-tooltip" data-bs-placement="bottom" title="Add">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="16"></line>
                     <line x1="8" y1="12" x2="16" y2="12"></line>
                 </svg>
-                <span class="icon-name"> Add</span>
             </a>
 
         </div>
@@ -118,12 +117,12 @@
                                 <td>{{ $row->GMCTHUser }}</td>
                                 <td>
                                     <!-- Edit -->
-                                    <a href="edit_city/{{ Crypt::encryptString($row->id) }}"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
-                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
-                                            </path>
-                                        </svg></a>
+                                    <a href="edit_city/{{ Crypt::encryptString($row->id) }}"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 bs-tooltip" data-bs-placement="bottom" title="Edit">
+                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                        </path>
+                                    </svg></a>
                                     <!-- Delete -->
-                                    <a href="javascript:void(0);" class="delete" id="{{ $row->id }}" action="delete"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+                                    <a href="javascript:void(0);" class="delete" id="{{ $row->id }}" action="delete"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 bs-tooltip" data-bs-placement="bottom" title="Delete">
                                             <polyline points="3 6 5 6 21 6"></polyline>
                                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
                                             </path>
@@ -202,7 +201,7 @@
             console.log(result)
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "delete_restore",
+                    url: "city_restore",
                     method: 'post',
                     data: {
                         id: id,
@@ -216,7 +215,7 @@
                             allowOutsideClick: false,
                             timer: 5000,
                         })
-                        window.city.reload();
+                        window.location.reload();
                     }
                 })
             } else if (
@@ -252,7 +251,7 @@
             console.log(result)
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "delete_restore",
+                    url: "city_restore",
                     method: "post",
                     data: {
                         id: id,
@@ -265,7 +264,7 @@
                             title: 'Your data has been Restored.',
                         })
                         // $('#zero-config').DataTable().reload();
-                        // window.city.reload();
+                        window.location = "{{ url('city') }}";
 
 
                     }
@@ -274,7 +273,7 @@
         })
     });
     $('#modal_Cancel').click(function() {
-        window.city.reload();
+        window.location.reload();
     });
 
     function fnConfirmationMsg(actionName, tableName, Id, Desc) {

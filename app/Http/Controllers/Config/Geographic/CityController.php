@@ -27,18 +27,18 @@ class CityController extends Controller
     {
         $city_list = City::where('GMCTHMarkForDeletion', '!=', 1)->with('fnState', 'fnCountry')->get();
         $state_list = State::all();
-        return view('config.Geographic.City.city', compact('city_list', 'state_list'));
+        return view('config.geographic.city.city', compact('city_list', 'state_list'));
     }
     public function add(Request $request)
     {
         $state_list = State::all();
-        return view('config.Geographic.City.add_city', compact('state_list'));
+        return view('config.geographic.city.add_city', compact('state_list'));
     }
     public function edit_city(Request $request)
     {
         $city = City::where('id', Crypt::decryptString($request->id))->with('fnState', 'fnCountry')->first();
         $state_list = State::all();
-        return view('config.Geographic.City.edit_city', compact('state_list', 'city'));
+        return view('config.geographic.city.edit_city', compact('state_list', 'city'));
     }
     public function submit_city(Request $request)
     {
@@ -91,11 +91,11 @@ class CityController extends Controller
     public function delete_city_list()
     {
         $delete_list = City::where('GMCTHMarkForDeletion', 1)->with('fnState', 'fnCountry')->get();
-        return view('config.Geographic.City.delete_city_list', compact('delete_list'));
+        return view('config.geographic.city.delete_city_list', compact('delete_list'));
     }
 
 
-    public function delete_restore(Request $request)
+    public function city_restore(Request $request)
     {
         try {
             $city = City::find($request->id);

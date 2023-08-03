@@ -52,10 +52,10 @@
                      <input type="hidden" value="{{$location['id']}}" name="id">
                         <div class="row m-2">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12 d-grid d-md-flex justify-content-md-end">
-                            <button class="btn btn-danger _effect--ripple waves-effect waves-light error_btn mx-2" data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button>
-                                <a href="{{route('location')}}" class="btn btn-info _effect--ripple waves-effect waves-light" type="submit">Back</a>
+                            <button class="btn btn-danger _effect--ripple waves-effect waves-light error_btn mx-2 bs-tooltip" data-bs-placement="bottom" title="Error" data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button>
+                                <a href="{{route('location')}}" class="btn btn-info _effect--ripple waves-effect waves-light bs-tooltip" data-bs-placement="bottom" title="Back" type="submit">Back</a>
 
-                                <button class="btn btn-success _effect--ripple waves-effect waves-light mx-2" type="submit">Update</button>
+                                <button class="btn btn-success _effect--ripple waves-effect waves-light mx-2 bs-tooltip" data-bs-placement="bottom" title="Update" type="submit">Update</button>
 
 
                             </div>
@@ -267,6 +267,8 @@
                             pos: 'bottom-right',
                             duration: 100000
                         })
+                        window.location = "{{ url('location') }}";
+
                     }
                     if (response.status == 'error') {
                         // Bottom Right

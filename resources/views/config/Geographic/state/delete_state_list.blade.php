@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Location Name</th>
+            <th scope="col">State Name</th>
             <th scope="col">Country Name</th>
             <th scope="col">User</th>
             <th class="text-center" scope="col">Action</th>
@@ -12,16 +12,16 @@
         @foreach($delete_list as $row)
         <tr>
             <td>
-                {{$row->GMLMHLocationId}}
+                {{$row->GMSMHStateId}}
             </td>
             <td>
-                {{$row->GMLMHDesc1}}
+                {{$row->GMSMHDesc1}}
             </td>
             <td>
-            {{$row->GMLMHCountryId}}
+            {{$row->GMSMHCountryId}}
             </td>
             <td>
-                <span class="text-success"> {{$row->GMLMHUser}}</span>
+                <span class="text-success"> {{$row->GMSMHUser}}</span>
             </td>
             <td class="text-center">
                 <div class="action-btns">

@@ -92,6 +92,15 @@
                 </a>
                 <ul class="collapse submenu list-unstyled show" id="application" data-bs-parent="#accordionExample">
                     <!-- <li class="active"> -->
+                    <li class="{{ Request::routeIs('city') ? 'active' : '' }}">
+                        <a href="{{route('city')}}"> City Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('state') ? 'active' : '' }}">
+                        <a href="{{route('state')}}"> State Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('country') ? 'active' : '' }}">
+                        <a href="{{route('country')}}"> Country Master </a>
+                    </li>
                     <li class="{{ Request::routeIs('location') ? 'active' : '' }}">
                         <a href="{{route('location')}}"> Location Master </a>
                     </li>

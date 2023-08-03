@@ -181,6 +181,48 @@ return [
          'GMLMHCityId' => [
             'required' => 'You must select a City Id',
          ],
+         //City
+        'GMCTHCityId' => [
+            'required' => 'City Id Cant be blank',
+            'min' => 'City Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'GMCTHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'GMCTHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
+         'GMCTHStateId' => [
+            'required' => 'You must select a State Id',
+         ],
+         //State
+        'GMSMHStateId' => [
+            'required' => 'State Id Cant be blank',
+            'min' => 'State Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'GMSMHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'GMSMHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
+         'GMSMHCountryId' => [
+            'required' => 'You must select a Country Id',
+         ],
+         //Country
+        'GMCMHCountryId' => [
+            'required' => 'Country Id Cant be blank',
+            'min' => 'Country Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'GMCMHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'GMCMHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
     ],
 
     /*

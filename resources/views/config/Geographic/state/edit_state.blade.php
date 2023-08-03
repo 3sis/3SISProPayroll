@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page_title','Edit City')
+@section('page_title','Edit State')
 @section('content')
 @section('css')
 <!-- BEGIN THEME GLOBAL STYLES -->
@@ -49,13 +49,13 @@
                     <div class="widget-header">
                     <form id='AddForm' method="post" autocomplete="off">
                      @csrf
-                     <input type="hidden" value="{{$city['id']}}" name="id">
+                     <input type="hidden" value="{{$state['id']}}" name="id">
                         <div class="row m-2">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12 d-grid d-md-flex justify-content-md-end">
-                            <button class="btn btn-danger _effect--ripple waves-effect waves-light error_btn mx-2" data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button>
-                                <a href="{{route('city')}}" class="btn btn-info _effect--ripple waves-effect waves-light" type="submit">Back</a>
+                            <button class="btn btn-danger _effect--ripple waves-effect waves-light error_btn mx-2 bs-tooltip" data-bs-placement="bottom" title="Error" data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button>
+                                <a href="{{route('state')}}" class="btn btn-info _effect--ripple waves-effect waves-light bs-tooltip" data-bs-placement="bottom" title="Back" type="submit">Back</a>
 
-                                <button class="btn btn-success _effect--ripple waves-effect waves-light mx-2" type="submit">Update</button>
+                                <button class="btn btn-success _effect--ripple waves-effect waves-light mx-2 bs-tooltip" data-bs-placement="bottom" title="Update" type="submit">Update</button>
 
 
                             </div>
@@ -67,62 +67,48 @@
             <div class="col-lg-12 layout-spacing">
                 <div class="statbox widget box box-shadow">
                     <div class="widget-header">
-                    <h4>Edit City</h4>
+                    <h4>Edit State</h4>
                     </div>
                     <div class="widget-content widget-content-area">
 
                             <div class="row g-3">
                             <div class="col-md-3">
-                                <label for="validationDefault01" class="form-label">City Id<span class="text-danger">
+                                <label for="validationDefault01" class="form-label">State Id<span class="text-danger">
                                         *</span></label>
-                                <input type="text" name='GMCTHCityId' id='GMCTHCityId' class='form-control threshold' maxlength="20" placeholder="Enter City Name" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMCTHCityId', $city['GMCTHCityId'] ?? '') }}" readonly="readonly">
+                                <input type="text" name='GMSMHStateId' id='GMSMHStateId' class='form-control threshold' maxlength="20" placeholder="Enter State Name" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMSMHStateId', $state['GMSMHStateId'] ?? '') }}" readonly="readonly">
                             </div>
                             <div class="col-md-6">
-                                <label for="GMCTHDesc1" class="form-label">Description 1<span class="text-danger"> *</span></label>
-                                <input type="text" name='GMCTHDesc1' id='GMCTHDesc1' class='form-control threshold' maxlength="20" placeholder="Enter City Description 1" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMCTHDesc1', $city['GMCTHDesc1'] ?? '') }}">
+                                <label for="GMSMHDesc1" class="form-label">Description 1<span class="text-danger"> *</span></label>
+                                <input type="text" name='GMSMHDesc1' id='GMSMHDesc1' class='form-control threshold' maxlength="20" placeholder="Enter State Description 1" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMSMHDesc1', $state['GMSMHDesc1'] ?? '') }}">
 
                             </div>
                             <div class="col-md-3">
                                 <label for="validationDefault05" class="form-label">BI Desc<span class="text-danger">
                                         *</span></label>
-                                <input type="text" name='GMCTHBiDesc' id='GMCTHBiDesc' class='form-control threshold' maxlength="20" placeholder="Enter Bi Desc" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMCTHBiDesc', $city['GMCTHBiDesc'] ?? '') }}">
+                                <input type="text" name='GMSMHBiDesc' id='GMSMHBiDesc' class='form-control threshold' maxlength="20" placeholder="Enter Bi Desc" style='border-color: rgb(102, 175, 233); outline: 0px' value="{{ old('GMSMHBiDesc', $state['GMSMHBiDesc'] ?? '') }}">
                             </div>
                             <div class="col-md-12">
                                 <label for="validationDefault03" class="form-label">Description 2</label>
-                                <textarea name='GMCTHDesc2' id='GMCTHDesc2' class='form-control textarea' maxlength="200" placeholder="Enter City Description 2" style='border-color: rgb(102, 175, 233); outline: 0px'>{{ old('GMCTHDesc2', $city['GMCTHDesc2'] ?? '') }}</textarea>
+                                <textarea name='GMSMHDesc2' id='GMSMHDesc2' class='form-control textarea' maxlength="200" placeholder="Enter State Description 2" style='border-color: rgb(102, 175, 233); outline: 0px'>{{ old('GMSMHDesc2', $state['GMSMHDesc2'] ?? '') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label for="validationDefault04" class="form-label">State<span class="text-danger"> *</span></label>
-                                <select id='GMCTHStateId' name='GMCTHStateId' class="form-select" style="width: 100%;border: 1px solid #68a6ec;">
-                                    <option value=''>Select State</option>
-                                    @foreach ($state_list as $state)
-                                    @if (!empty($city['GMCTHStateId']) && $city['GMCTHStateId'] == $state->GMSMHStateId)
-                                    <option value='{{ $state->GMSMHStateId }}' selected>
-                                        {{ $state->GMSMHDesc1 }}
+                                <label for="validationDefault04" class="form-label">Country<span class="text-danger"> *</span></label>
+                                <select id='GMSMHCountryId' name='GMSMHCountryId' class="form-select" style="width: 100%;border: 1px solid #68a6ec;">
+                                    <option value=''>Select Country</option>
+                                    @foreach ($country_list as $country)
+                                    @if (!empty($state['GMSMHCountryId']) && $state['GMSMHCountryId'] == $country->GMCMHCountryId)
+                                    <option value='{{ $country->GMCMHCountryId }}' selected>
+                                        {{ $country->GMCMHDesc1 }}
                                     </option>
                                     @else
-                                    <option value='{{ $state->GMSMHStateId }}'>
-                                        {{ $state->GMSMHDesc1 }}
+                                    <option value='{{ $country->GMCMHCountryId }}'>
+                                        {{ $country->GMCMHDesc1 }}
                                     </option>
                                     @endif
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4">
-                                <label for="validationDefault05" class="form-label">Contry</label>
-                                <input type="hidden" name="GMCTHCountryId" id="GMCTHCountryId" value="{{ $city->GMCTHCountryId }}">
-                                <input type="text" name='countryName' id='countryName' class='form-control' value="{{ $city->fnCountry->GMCMHDesc1 }}" readonly>
-                            </div>
-
                             <div class="col-12">
-
-
-                                <!-- <a href="{{route('city')}}" class="btn btn-info _effect--ripple waves-effect waves-light" type="submit">Back</a>
-
-                                <button class="btn btn-success _effect--ripple waves-effect waves-light" type="submit">Save</button>
-
-                                <button class="btn btn-danger _effect--ripple waves-effect waves-light error_btn" data-bs-toggle="modal" data-bs-target="#ErrorListModalCenter">Error</button> -->
-
                                 <!-- Modal -->
                                 <div class="modal fade" id="ErrorListModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -195,29 +181,29 @@
     });
     $("#AddForm").submit(function(e) {
         e.preventDefault();
-        $('#GMCTHCityId,#GMCTHDesc1,#GMCTHStateId').removeClass('border border-danger');
+        $('#GMSMHStateId,#GMSMHDesc1,#GMSMHCountryId').removeClass('border border-danger');
 
-        if ($('#GMCTHCityId').val() == '') {
-            $('#GMCTHCityId').addClass('border border-danger');
+        if ($('#GMSMHStateId').val() == '') {
+            $('#GMSMHStateId').addClass('border border-danger');
         }
-        if ($('#GMCTHDesc1').val() == '') {
-            $('#GMCTHDesc1').addClass('border border-danger');
+        if ($('#GMSMHDesc1').val() == '') {
+            $('#GMSMHDesc1').addClass('border border-danger');
         }
 
-        if ($('#GMCTHStateId').val() == '') {
-            $('#GMCTHStateId').addClass('border border-danger');
+        if ($('#GMSMHCountryId').val() == '') {
+            $('#GMSMHCountryId').addClass('border border-danger');
         }
         $('.form_error_list').html('');
-        if ($('#GMCTHCityId').val() == '' || $('#GMCTHDesc1').val() == '' ||
-            $('#GMCTHStateId').val() == '') {
-            if ($('#GMCTHCityId').val() == '') {
-                $('.form_error_list').append('<p>Please Enter City name !</p>');
+        if ($('#GMSMHStateId').val() == '' || $('#GMSMHDesc1').val() == '' ||
+            $('#GMSMHCountryId').val() == '') {
+            if ($('#GMSMHStateId').val() == '') {
+                $('.form_error_list').append('<p>Please Enter State name !</p>');
             }
-            if ($('#GMCTHDesc1').val() == '') {
-                $('.form_error_list').append('<p>Please Enter City Description 1 !</p>');
+            if ($('#GMSMHDesc1').val() == '') {
+                $('.form_error_list').append('<p>Please Enter State Description 1 !</p>');
             }
-            if ($('#GMCTHStateId').val() == '') {
-                $('.form_error_list').append('<p>Please Select State !</p>');
+            if ($('#GMSMHCountryId').val() == '') {
+                $('.form_error_list').append('<p>Please Select Country !</p>');
             }
             var error_count = $(".form_error_list").children().length;
             console.log(error_count);
@@ -231,7 +217,7 @@
             return false;
         } else {
             $.ajax({
-                url: "{{ url('submit_city') }}",
+                url: "{{ url('submit_state') }}",
                 method: 'post',
                 data: new FormData(this),
                 processData: false,
@@ -254,20 +240,20 @@
                         });
                     }
                     if (response.status == 'success') {
-                        // $('#GMCTHStateId').val('').trigger("change");
+                        // $('#GMSMHCountryId').val('').trigger("change");
                         // $('#AddForm')[0].reset();
                         custom_notification({
-                            text: 'City Update successfully',
+                            text: 'State Update successfully',
                             pos: 'bottom-right',
                             duration: 100000
                         })
-                        window.location = "{{ url('city') }}";
+                        window.location = "{{ url('state') }}";
 
                     }
                     if (response.status == 'error') {
                         // Bottom Right
                         custom_notification({
-                            text: 'City Master not save',
+                            text: 'State Master not save',
                             pos: 'bottom-right'
                         })
                     }
@@ -275,23 +261,5 @@
             })
         }
     });
-
-    $('#GMCTHStateId').change(function() {
-        var id = $(this).val();
-        // alert(id);
-        getDesc(id);
-    });
-
-    function getDesc(id) {
-        $.ajax({
-            url: "{{ url('get_state_desc') }}",
-            type: 'get',
-            data: 'id=' + id,
-            success: function(response) {
-                $('#GMCTHCountryId').val(response.CountryId);
-                $('#countryName').val(response.CountryDesc);
-            }
-        })
-    }
 </script>
 @endsection

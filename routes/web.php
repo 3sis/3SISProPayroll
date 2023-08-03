@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Config\Geographic\LocationController;
 use App\Http\Controllers\Config\Geographic\CityController;
+use App\Http\Controllers\Config\Geographic\StateController;
+use App\Http\Controllers\Config\Geographic\CountryController;
 use App\Http\Controllers\Config\FiscalYear\WeeklyOffController;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -42,6 +44,26 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('city_restore', 'city_restore');
         Route::get('get_State_desc', 'getStateDesc')->name('get_State_desc');
         Route::get('delete_city_list', 'delete_city_list');
+    });
+     // State Master
+     Route::controller(StateController::class)->group(function () {
+        // Route::get('/','index');
+        Route::get('state', 'index')->name('state');
+        Route::get('state/add', 'add')->name('add_state');
+        Route::get('edit_state/{id}', 'edit_state')->name('edit_state');
+        Route::post('submit_state', 'submit_state');
+        Route::post('state_restore', 'state_restore');
+        Route::get('delete_state_list', 'delete_state_list');
+    });
+     // Country Master
+     Route::controller(CountryController::class)->group(function () {
+        // Route::get('/','index');
+        Route::get('country', 'index')->name('country');
+        Route::get('country/add', 'add')->name('add_country');
+        Route::get('edit_country/{id}', 'edit_country')->name('edit_country');
+        Route::post('submit_country', 'submit_country');
+        Route::post('country_restore', 'country_restore');
+        Route::get('delete_country_list', 'delete_country_list');
     });
     // WeeklyOff
     Route::controller(WeeklyOffController::class)->group(function () {
