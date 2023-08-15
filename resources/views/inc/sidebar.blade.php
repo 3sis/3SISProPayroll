@@ -122,6 +122,15 @@
                     <li class="{{ Request::routeIs('salutation') ? 'active' : '' }}">
                         <a href="{{route('salutation')}}"> Salutation Master </a>
                     </li>
+                    <li class="{{ Request::routeIs('employee') ? 'active' : '' }}">
+                        <a href="{{route('employee')}}"> Employee Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('clone') ? 'active' : '' }}">
+                        <a href="{{route('clone')}}"> Clone Employee </a>
+                    </li>
+                    <li class="{{ Request::routeIs('stoppay') ? 'active' : '' }}">
+                        <a href="{{route('stoppay')}}"> Stop Payment </a>
+                    </li>
                 </ul>
             </li>
 
