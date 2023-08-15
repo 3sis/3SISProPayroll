@@ -223,6 +223,85 @@ return [
          'GMCMHDesc2' => [
              'max' => 'Max 200 Characters allowed',
          ],
+         //Employee
+         'EMGIHEmployeeId' => [
+            'required' => 'Employee Id Cant be blank',
+            'min' => 'Employee Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'EMGIHGenderId' => [
+            'required' => 'You must select a Gender Id',
+        ],
+         'EMGIHFirstName' => [
+             'required' => 'First Name Cant be blank',
+         ],
+         'EMGIHPresentAddress1' => [
+             'required' => 'Present Address Cant be blank',
+         ],
+         'EMGIHPresentCityId' => [
+            'required' => 'You must select a City Id',
+         ],
+         //employee clone_oto
+        'NewEmployeeId' => [
+            'required' => 'New Employee Id Cant be blank',
+            'min' => 'New Employee Id at least  minimum 2 char',
+            'unique'=>'Employee id already Exists',
+         ],
+         'EMGIHEmployeeId' => [
+             'required' => 'Employee Id Cant be blank',
+         ],
+         'NewEmployeeFirstName' => [
+            'required' => 'Employee First Name Cant be blank',
+        ],
+
+         //Department
+        'ESDPHDepartmentId' => [
+            'required' => 'Department Id Cant be blank',
+            'min' => 'Department Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'ESDPHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'ESDPHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
+         //Designation
+        'ESDEHDesignationId' => [
+            'required' => 'Designation Id Cant be blank',
+            'min' => 'Designation Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'ESDEHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'ESDEHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
+         //Grade
+        'ESGRHGradeId' => [
+            'required' => 'Grade Id Cant be blank',
+            'min' => 'Grade Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'ESGRHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'ESGRHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
+         //Type
+        'ESTYHTypeId' => [
+            'required' => 'Type Id Cant be blank',
+            'min' => 'Type Id at least  minimum 2 char',
+            'unique'=>'Id already Exists',
+         ],
+         'ESTYHDesc1' => [
+             'required' => 'Description Cant be blank',
+         ],
+         'ESTYHDesc2' => [
+             'max' => 'Max 200 Characters allowed',
+         ],
     ],
 
     /*

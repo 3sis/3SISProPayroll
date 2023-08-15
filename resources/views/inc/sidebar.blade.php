@@ -104,6 +104,24 @@
                     <li class="{{ Request::routeIs('location') ? 'active' : '' }}">
                         <a href="{{route('location')}}"> Location Master </a>
                     </li>
+                    <li class="{{ Request::routeIs('blood') ? 'active' : '' }}">
+                        <a href="{{route('blood')}}"> Blood Group </a>
+                    </li>
+                    <li class="{{ Request::routeIs('currency') ? 'active' : '' }}">
+                        <a href="{{route('currency')}}"> Currency Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('gender') ? 'active' : '' }}">
+                        <a href="{{route('gender')}}"> Gender Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('nationality') ? 'active' : '' }}">
+                        <a href="{{route('nationality')}}"> Nationality Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('race') ? 'active' : '' }}">
+                        <a href="{{route('race')}}"> Race Master </a>
+                    </li>
+                    <li class="{{ Request::routeIs('salutation') ? 'active' : '' }}">
+                        <a href="{{route('salutation')}}"> Salutation Master </a>
+                    </li>
                 </ul>
             </li>
 

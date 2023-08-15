@@ -39,6 +39,8 @@ class StateController extends Controller
     }
     public function submit_state(Request $request)
     {
+        dd($request->all());
+
         try {
 
             $validator = Validator::make($request->all(), [
